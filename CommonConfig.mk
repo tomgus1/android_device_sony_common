@@ -17,6 +17,16 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := false
 TARGET_NO_KERNEL := false
 
+#Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+DEVICE_SPECIFIC_CAMERA_PATH := hardware/sony/camera
+
+#QCOM Hardware
+#BOARD_USES_QCOM_HARDWARE := true
+#SONY_BF64_KERNEL_VARIANT := true
+TARGET_KERNEL_SOURCE := kernel/sony/msm
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+
 # common cmdline parameters
 BOARD_KERNEL_CMDLINE += user_debug=31 androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
@@ -75,3 +85,4 @@ BUILD_KERNEL := true
 
 # SELinux
 include device/sony/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += device/sony/common/sepolicy
