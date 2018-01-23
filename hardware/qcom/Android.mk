@@ -6,15 +6,15 @@ MASTER_SIDE_CP_TARGET_LIST := msm8996 msm8998
 
 audio-hal := hardware/qcom/audio
 gps-hal := hardware/qcom/gps/sdm845
-display-hal := hardware/qcom/display/msm8998
-QCOM_MEDIA_ROOT := hardware/qcom/media/msm8998
+display-hal := hardware/qcom/display
+QCOM_MEDIA_ROOT := hardware/qcom/media
 OMX_VIDEO_PATH := mm-video-v4l2
-media-hal := hardware/qcom/media/msm8998
+media-hal := hardware/qcom/media
 
-include $(display-hal)/Android.mk
+#include $(display-hal)/Android.mk
 include $(call all-makefiles-under,$(audio-hal))
 include $(call all-makefiles-under,$(gps-hal))
-include $(call all-makefiles-under,$(media-hal))
+#include $(call all-makefiles-under,$(media-hal))
 
 ifeq ($(BOARD_HAVE_BLUETOOTH_QCOM),true)
   include $(call all-makefiles-under,hardware/qcom/bt/msm8998)
