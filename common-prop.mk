@@ -168,3 +168,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Perform color transform on the client
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc2.skip_client_color_transform=false
+
+
+# CAF
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.bluetooth.soc=cherokee \
+    ro.bluetooth.library_name=libbluetooth_qti.so \
+    persist.vendor.btstack.enable.splita2dp=false \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac 
