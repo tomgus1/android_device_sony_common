@@ -75,9 +75,11 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 # NFC packages
-PRODUCT_PACKAGES += \
-    NfcNci \
-    Tag
+#PRODUCT_PACKAGES += \
+#    nfc_nci.nqx.default.hw \
+#    com.android.nfc_extras \
+#    NfcNci \
+#    Tag
 
 # CAMERA
 PRODUCT_PACKAGES += \
@@ -138,3 +140,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files \
     fs_config_dirs
+
+#CAF
+PRODUCT_PACKAGES += \
+    SnapdragonGallery \
+    SnapdragonMusic
