@@ -20,8 +20,8 @@ endif
 ifeq ($(SOMC_KERNEL_VERSION),4.9)
 audio-hal := hardware/qcom/audio
 gps-hal := hardware/qcom/gps/sdm845
-display-hal := hardware/qcom/display/sde
-QCOM_MEDIA_ROOT := hardware/qcom/media/sdm845
+display-hal := hardware/qcom/display
+QCOM_MEDIA_ROOT := hardware/qcom/media
 OMX_VIDEO_PATH := mm-video-v4l2
 media-hal := $(QCOM_MEDIA_ROOT)
 endif
@@ -38,7 +38,11 @@ include hardware/qcom/msm8998/json-c/Android.mk
 include hardware/qcom/msm8998/time-services/Android.mk
 endif
 
-include $(display-hal)/Android.mk
+#include $(display-hal)/Android.mk
 include $(call all-makefiles-under,$(audio-hal))
 include $(call all-makefiles-under,$(gps-hal))
-include $(call all-makefiles-under,$(media-hal))
+#include $(call all-makefiles-under,$(media-hal))
+
+ifeq ($(BOARD_HAVE_BLUETOOTH_QCOM),true)
+include $(call all-makefiles-under,$(bt-hal))
+endif
