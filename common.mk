@@ -109,3 +109,61 @@ $(call inherit-product, device/sony/common/common-packages.mk)
 $(call inherit-product, device/sony/common/common-perm.mk)
 $(call inherit-product, device/sony/common/common-prop.mk)
 $(call inherit-product, device/sony/common/common-treble.mk)
+
+# Recommend using the non debug dexpreopter
+#USE_DEX2OAT_DEBUG := false
+
+WITH_DEXPREOPT=false
+
+#ALLOW_MISSING_DEPENDENCIES=true
+
+#skip boot jars check
+#SKIP_BOOT_JARS_CHECK := true
+
+TARGET_USES_AOSP := true
+BOARD_USE_ENFORCING_SELINUX:= false
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
+# whitelisted app
+PRODUCT_COPY_FILES += \
+    device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+
+# tcmiface for tcm support
+PRODUCT_PACKAGES += tcmiface
+
+PRODUCT_BOOT_JARS += tcmiface
+
+#PRODUCT_PACKAGES += IExtTelephony
+
+# MSIM manual provisioning
+PRODUCT_PACKAGES += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
+#$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+#NQ_NFC
+#NQ_NFC := NQNfcNci
+#NQ_NFC += libnqnfc-nciNQ_NFC += libnqnfc_nci_jni
+#NQ_NFC += nfc_nci.nqx.default
+#NQ_NFC += libp61-jcop-kit
+#NQ_NFC += com.nxp.nfc.nq
+#NQ_NFC += com.nxp.nfc.nq.xml
+#NQ_NFC += libpn547_fw.so
+#NQ_NFC += libpn548ad_fw.so
+#NQ_NFC += libnfc-brcm.conf
+#NQ_NFC += libnfc-brcm_NCI2_0.conf
+#NQ_NFC += libnfc-nci.conf
+#NQ_NFC += libnfc-nci_NCI2_0.conf
+#NQ_NFC += libnfc-nxp_default.conf
+#NQ_NFC += nqnfcee_access.xml
+#NQ_NFC += nqnfcse_access.xml
+#NQ_NFC += TagNQ_NFC += nqnfcinfo
+#NQ_NFC += com.android.nfc_extras
+#NQ_NFC += vendor.nxp.hardware.nfc@1.1-service
+#NQ_NFC += nfc_nci.nqx.default.hw
+#PRODUCT_PROPERTY_OVERRIDES += ro.hardware.nfc_nci=nqx.default
+
+#ifeq ($(strip $(TARGET_USES_NQ_NFC)),true)
+#PRODUCT_PACKAGES += $(NQ_NFC)
+#PRODUCT_BOOT_JARS += com.nxp.nfc.nq
+#endif

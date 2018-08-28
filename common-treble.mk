@@ -51,9 +51,11 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-service
 
 # NFC packages
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.1-impl \
-    android.hardware.nfc@1.1-service
+#PRODUCT_PACKAGES += \
+#    android.hardware.nfc@1.0-impl \
+#    android.hardware.nfc@1.0-service \
+#    vendor.nxp.hardware.nfc@1.0-impl \
+#    vendor.nxp.hardware.nfc@1.0-service
 
 # GNSS
 PRODUCT_PACKAGES += \
