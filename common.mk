@@ -24,7 +24,7 @@ TARGET_VENDOR_VERSION := v1
 # build/make/target/product/security/verity.pk8, but this can be
 # changed using a post-build re-signing operation (or by making a
 # change inside the build project).
-PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/oss/release-keys/testkey
+#PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/oss/release-keys/testkey
 
 # Common path
 COMMON_PATH := device/sony/common
@@ -97,9 +97,9 @@ PRODUCT_PACKAGES += \
     init.qcom.ipastart.sh
 
 # APN list
-PRODUCT_COPY_FILES += \
-    device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml \
-    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+#PRODUCT_COPY_FILES += \
+#    device/sample/etc/old-apns-conf.xml:system/etc/old-apns-conf.xml \
+#    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
 PRODUCT_CUSTOM_IMAGE_MAKEFILES := $(COMMON_PATH)/odm.mk
 

@@ -38,10 +38,8 @@ include hardware/qcom/msm8998/json-c/Android.mk
 include hardware/qcom/msm8998/time-services/Android.mk
 endif
 
-#include $(display-hal)/Android.mk
 include $(call all-makefiles-under,$(audio-hal))
 include $(call all-makefiles-under,$(gps-hal))
-#include $(call all-makefiles-under,$(media-hal))
 
 ifeq ($(BOARD_HAVE_BLUETOOTH_QCOM),true)
 include $(call all-makefiles-under,$(bt-hal))
