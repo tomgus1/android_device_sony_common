@@ -76,10 +76,10 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 #PRODUCT_PACKAGES += \
-#    nfc_nci.nqx.default.hw \
-#    com.android.nfc_extras \
-#    NfcNci \
-#    Tag
+    nfc_nci.nqx.default.hw \
+    com.android.nfc_extras \
+    NfcNci \
+    Tag
 
 # CAMERA
 PRODUCT_PACKAGES += \
