@@ -79,7 +79,6 @@ AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Audio configuration file
-#-include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 AUDIO_FEATURE_ENABLED_SND_MONITOR := true
 
 # Camera

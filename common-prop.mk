@@ -97,11 +97,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecomm=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
+    ro.audio.soundtrigger=none \
+    ro.audio.soundtrigger.lowpower=false \
     media.aac_51_output_enabled=true \
     audio.deep_buffer.media=1 \
     fmas.hdph_sgain=0 \
     ro.config.vc_call_vol_steps=7 \
-    ro.config.media_vol_steps=25
+    ro.config.media_vol_steps=25 \
+    vendor.audio.parser.ip.buffer.size=0 \
+    vendor.audio.soundtrigger.phrase.adsp.level=40 \
+    vendor.audio.soundtrigger.phrase.level=40 \
+    vendor.audio.soundtrigger.training.level=50 \
+    vendor.audio.soundtrigger.user.adsp.level=30 \
+    vendor.audio.soundtrigger.user.level=60
 
 # Property to enable user to access Google WFD settings.
 PRODUCT_PROPERTY_OVERRIDES += \
