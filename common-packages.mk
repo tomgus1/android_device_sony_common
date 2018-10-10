@@ -14,22 +14,30 @@
 
 # Audio
 PRODUCT_PACKAGES += \
+    audiod \
     audio.a2dp.default \
+    audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler
-
-# For audio.primary
-PRODUCT_PACKAGES += \
-    libtinyalsa \
+    libaudio-resampler \
+    libaudiopolicyservice \
     libaudioroute \
-    tinymix
-
-# Audio effects
-PRODUCT_PACKAGES += \
+    libqahw \
+    libqahwwrapper \
+    libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libqcompostprocbundle
+    libtinyalsa\
+    libtinycompress \
+    libvolumelistener \
+    tinymix 
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sound_trigger_platform_info.xml
+
+-include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
 # GFX
 PRODUCT_PACKAGES += \
