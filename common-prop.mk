@@ -183,8 +183,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 # CAF
-PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.bluetooth.soc=cherokee \
-    ro.bluetooth.library_name=libbluetooth_qti.so \
-    persist.vendor.btstack.enable.splita2dp=false \
-    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac 
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    vendor.bluetooth.soc=cherokee \
+#    ro.bluetooth.library_name=libbluetooth_qti.so \
+#    persist.vendor.btstack.enable.splita2dp=false \
+#    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac 
