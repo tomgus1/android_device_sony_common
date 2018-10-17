@@ -39,6 +39,10 @@ PRODUCT_COPY_FILES += \
 
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
+# Audio deps
+PRODUCT_PACKAGES += \
+    libfmq
+
 # GFX
 PRODUCT_PACKAGES += \
     libhdmi \
