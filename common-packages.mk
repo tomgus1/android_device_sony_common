@@ -82,9 +82,11 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf \
     libwpa_client
 
+ifeq ($(BOARD_HAVE_BLUETOOTH_BCM),true)
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor
+endif
 
 # NFC packages
 #PRODUCT_PACKAGES += \
@@ -105,12 +107,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep \
-
-ifneq ($(SOMC_KERNEL_VERSION),4.9)
-# OSS Thermal Management
-PRODUCT_PACKAGES += \
-    thermanager
-endif
 
 # OSS WIFI and BT MAC tool
 PRODUCT_PACKAGES += \

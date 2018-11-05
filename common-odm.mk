@@ -1,3 +1,7 @@
+# SDE DRM
+PRODUCT_PACKAGES += \
+    libsdedrm
+
 # Secure MSM
 PRODUCT_PACKAGES += \
     qseecomd
@@ -115,6 +119,7 @@ PRODUCT_PACKAGES += \
 
 # Camera Override
 PRODUCT_PACKAGES += \
+    libcom.qti.chinodeutils \
     com.qti.chi.override
 
 # Camera Framework
