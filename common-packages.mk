@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     macaddrsetup
 
+# Telephony
+PRODUCT_PACKAGES += \
+    QcRilAm
+
 # QCOM Data
 PRODUCT_PACKAGES += \
     librmnetctl

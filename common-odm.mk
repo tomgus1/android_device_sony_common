@@ -49,6 +49,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    sscrpcd \
     libsensor_reg  \
     libsensor1 \
     sensors.msm8226 \
@@ -93,6 +94,8 @@ PRODUCT_PACKAGES += \
     libqmi_encdec \
     libqmiservices \
     libqmiservices_ext \
+    libqrtr \
+    libqsocket \
     qmuxd
 
 # Ril
