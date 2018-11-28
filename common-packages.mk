@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/google/av \
+    hardware/google/interfaces
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -59,6 +63,10 @@ PRODUCT_PACKAGES += \
     libOmxVdecHevc \
     libOmxVenc
 
+# Enable Codec 2.0
+PRODUCT_PACKAGES += \
+    libstagefright_ccodec
+
 # GPS
 PRODUCT_PACKAGES += \
     libloc_core \
@@ -72,6 +80,11 @@ PRODUCT_PACKAGES += \
     libloc_api_v02 \
     libloc_ds_api \
     libgnsspps
+
+# IPA
+PRODUCT_PACKAGES += \
+    IPACM_cfg.xml \
+    ipacm
 
 # WLAN
 PRODUCT_PACKAGES += \
@@ -105,6 +118,10 @@ PRODUCT_PACKAGES += \
 # OSS WIFI and BT MAC tool
 PRODUCT_PACKAGES += \
     macaddrsetup
+
+# Telephony
+PRODUCT_PACKAGES += \
+    QcRilAm
 
 # QCOM Data
 PRODUCT_PACKAGES += \

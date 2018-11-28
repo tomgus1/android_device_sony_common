@@ -13,8 +13,14 @@ MASTER_SIDE_CP_TARGET_LIST := msm8996 msm8998 sdm660 sdm845
 
 audio-hal := hardware/qcom/audio
 gps-hal := hardware/qcom/gps/sdm845
+#ipa-hal := hardware/qcom/data/ipacfg-mgr/sdm845
+ifeq ($(TARGET_USES_SDE),true)
+display-hal := hardware/qcom/display/sde
+QCOM_MEDIA_ROOT := hardware/qcom/media/sdm845
+else
 display-hal := hardware/qcom/display
 QCOM_MEDIA_ROOT := hardware/qcom/media
+endif
 OMX_VIDEO_PATH := mm-video-v4l2
 media-hal := $(QCOM_MEDIA_ROOT)
 
@@ -26,8 +32,10 @@ TARGET_KERNEL_VERSION := $(SOMC_KERNEL_VERSION)
 include device/sony/common/hardware/qcom/utils.mk
 
 #include $(call all-makefiles-under,$(audio-hal))
+include $(call first-makefiles-under,$(ipa-hal))
 include $(call all-makefiles-under,$(gps-hal))
 
 ifeq ($(BOARD_HAVE_BLUETOOTH_QCOM),true)
 include $(call all-makefiles-under,$(bt-hal))
+endif
 endif
