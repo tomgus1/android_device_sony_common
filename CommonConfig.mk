@@ -53,7 +53,11 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_USES_MKE2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-BOARD_ROOT_EXTRA_FOLDERS := bt_firmware dsp firmware persist odm
+BOARD_ROOT_EXTRA_FOLDERS := odm
+BOARD_ROOT_EXTRA_SYMLINKS += /$(TARGET_COPY_OUT_VENDOR)/dsp:/dsp
+BOARD_ROOT_EXTRA_SYMLINKS += /$(TARGET_COPY_OUT_VENDOR)/firmware_mnt:/firmware
+BOARD_ROOT_EXTRA_SYMLINKS += /$(TARGET_COPY_OUT_VENDOR)/bt_firmware:/bt_firmware
+BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
@@ -119,5 +123,13 @@ BUILD_KERNEL := true
 # SELinux
 include device/sony/sepolicy/sepolicy.mk
 
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
-DEVICE_MATRIX_FILE   := $(COMMON_PATH)/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/vintf/manifest.xml
+DEVICE_MATRIX_FILE   := $(COMMON_PATH)/vintf/compatibility_matrix.xml
+
+ifeq ($(PRODUCT_DEVICE_DS),true)
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.radio_ds.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio_ds.xml
+else
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.radio_ss.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio_ss.xml
+endif
