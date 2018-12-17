@@ -90,7 +90,7 @@ PRODUCT_PACKAGES += \
     libwpa_client
 
 # NFC packages
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     nfc_nci.nqx.default.hw \
     com.android.nfc_extras \
     NfcNci \
