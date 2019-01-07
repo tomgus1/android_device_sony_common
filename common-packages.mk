@@ -14,27 +14,22 @@
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
-    audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler \
-    libaudiopolicyservice \
+    libaudio-resampler
+
+# For audio.primary
+PRODUCT_PACKAGES += \
+    libtinyalsa\
     libaudioroute \
-    libqahw \
-    libqahwwrapper \
-    libqcompostprocbundle \
+    tinymix
+
+# Audio effects
+PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libtinyalsa\
-    libtinycompress \
-    libvolumelistener \
-    tinymix 
-
-# Audio deps
-PRODUCT_PACKAGES += \
-    libfmq
+    libqcompostprocbundle	
 
 # GFX
 PRODUCT_PACKAGES += \
