@@ -131,7 +131,7 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 PRODUCT_COPY_FILES += \
     device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
     device/qcom/common/privapp-permissions-qti.xml:system/etc/sysconfig/privapp-permissions-qti.xml
-	
+
 # tcmiface for tcm support
 PRODUCT_PACKAGES += tcmiface
 
@@ -145,29 +145,5 @@ PRODUCT_BOOT_JARS += telephony-ext
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-#NQ_NFC
-#NQ_NFC := NQNfcNci
-#NQ_NFC += libnqnfc-nciNQ_NFC += libnqnfc_nci_jni
-#NQ_NFC += nfc_nci.nqx.default
-#NQ_NFC += libp61-jcop-kit
-#NQ_NFC += com.nxp.nfc.nq
-#NQ_NFC += com.nxp.nfc.nq.xml
-#NQ_NFC += libpn547_fw.so
-#NQ_NFC += libpn548ad_fw.so
-#NQ_NFC += libnfc-brcm.conf
-#NQ_NFC += libnfc-brcm_NCI2_0.conf
-#NQ_NFC += libnfc-nci.conf
-#NQ_NFC += libnfc-nci_NCI2_0.conf
-#NQ_NFC += libnfc-nxp_default.conf
-#NQ_NFC += nqnfcee_access.xml
-#NQ_NFC += nqnfcse_access.xml
-#NQ_NFC += TagNQ_NFC += nqnfcinfo
-#NQ_NFC += com.android.nfc_extras
-#NQ_NFC += vendor.nxp.hardware.nfc@1.1-service
-#NQ_NFC += nfc_nci.nqx.default.hw
-#PRODUCT_PROPERTY_OVERRIDES += ro.hardware.nfc_nci=nqx.default
-
-#ifeq ($(strip $(TARGET_USES_NQ_NFC)),true)
-#PRODUCT_PACKAGES += $(NQ_NFC)
-#PRODUCT_BOOT_JARS += com.nxp.nfc.nq
-#endif
+# Include perf and iop blobs
+-include vendor/qcom/common/qti-vendor.mk
