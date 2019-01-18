@@ -29,7 +29,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libqcompostprocbundle	
+    libqcompostprocbundle
 
 # GFX
 PRODUCT_PACKAGES += \
