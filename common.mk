@@ -147,8 +147,8 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
-    device/qcom/common/privapp-permissions-qti.xml:system/etc/sysconfig/privapp-permissions-qti.xml
+    $(COMMON_PATH)/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
+    $(COMMON_PATH)/privapp-permissions-qti.xml:system/etc/sysconfig/privapp-permissions-qti.xml
 
 # tcmiface for tcm support
 PRODUCT_PACKAGES += tcmiface
