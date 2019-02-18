@@ -122,35 +122,12 @@ $(call inherit-product, device/sony/common/common-perm.mk)
 $(call inherit-product, device/sony/common/common-prop.mk)
 $(call inherit-product, device/sony/common/common-treble.mk)
 
-# Recommend using the non debug dexpreopter
-#USE_DEX2OAT_DEBUG := false
-
-WITH_DEXPREOPT=false
-
-#ALLOW_MISSING_DEPENDENCIES=true
-
-#skip boot jars check
-#SKIP_BOOT_JARS_CHECK := true
-
-TARGET_USES_AOSP := true
-BOARD_USE_ENFORCING_SELINUX:= false
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
     $(COMMON_PATH)/privapp-permissions-qti.xml:system/etc/sysconfig/privapp-permissions-qti.xml
-
-# tcmiface for tcm support
-PRODUCT_PACKAGES += tcmiface
-
-PRODUCT_BOOT_JARS += tcmiface
-
-#PRODUCT_PACKAGES += IExtTelephony
-
-# MSIM manual provisioning
-PRODUCT_PACKAGES += telephony-ext
-PRODUCT_BOOT_JARS += telephony-ext
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
