@@ -21,7 +21,7 @@ PRODUCT_PACKAGES += \
 
 # For audio.primary
 PRODUCT_PACKAGES += \
-    libtinyalsa\
+    libtinyalsa \
     libaudioroute \
     tinymix
 
@@ -30,6 +30,10 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcompostprocbundle
+
+# Audio deps
+PRODUCT_PACKAGES += \
+    libfmq
 
 # GFX
 PRODUCT_PACKAGES += \
@@ -77,8 +81,6 @@ PRODUCT_PACKAGES += \
 
 # NFC packages
 PRODUCT_PACKAGES += \
-    nfc_nci.nqx.default.hw \
-    com.android.nfc_extras \
     NfcNci \
     Tag
 
@@ -94,6 +96,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep \
+
+# OSS Power HAL
+PRODUCT_PACKAGES += \
+    librqbalance \
+    android.hardware.power@1.3-service.sony
 
 # OSS WIFI and BT MAC tool
 PRODUCT_PACKAGES += \
@@ -136,12 +143,17 @@ PRODUCT_PACKAGES += \
     libjson \
     libxml2 \
 
+# External exFat tools
+PRODUCT_PACKAGES += \
+    mkfs.exfat \
+    fsck.exfat
+
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files \
     fs_config_dirs
-
+	
 #CAF
 PRODUCT_PACKAGES += \
     SnapdragonGallery \
-    SnapdragonMusic
+    SnapdragonMusic	
