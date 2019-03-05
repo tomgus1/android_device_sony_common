@@ -126,8 +126,7 @@ endif
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service
+    android.hardware.power@1.3-service.sony
 
 ifeq ($(AB_OTA_UPDATER),true)
 # Boot control
