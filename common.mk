@@ -124,8 +124,7 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml \
-    $(COMMON_PATH)/privapp-permissions-qti.xml:system/etc/sysconfig/privapp-permissions-qti.xml
+    $(COMMON_PATH)/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
 
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
