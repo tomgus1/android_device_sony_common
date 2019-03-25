@@ -14,6 +14,7 @@ MSM_VIDC_TARGET_LIST := msm8952 msm8996 msm8998 sdm660 sdm845
 MASTER_SIDE_CP_TARGET_LIST := msm8996 msm8998 sdm660 sdm845
 
 audio-hal := hardware/qcom/audio
+bt-hal := hardware/qcom/bt
 gps-hal := hardware/qcom/gps/sdm845
 #ipa-hal := hardware/qcom/data/ipacfg-mgr/sdm845
 
