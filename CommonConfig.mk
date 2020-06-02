@@ -51,8 +51,6 @@ TARGET_USES_MKE2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 BOARD_ROOT_EXTRA_FOLDERS := odm
-BOARD_ROOT_EXTRA_SYMLINKS += /$(TARGET_COPY_OUT_VENDOR)/firmware_mnt:/firmware
-BOARD_ROOT_EXTRA_SYMLINKS += /$(TARGET_COPY_OUT_VENDOR)/bt_firmware:/bt_firmware
 BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
 
 # Filesystem
@@ -82,6 +80,8 @@ endif
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
+BOARD_SUPPORTS_OPENSOURCE_STHAL := true
+AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
@@ -140,11 +140,14 @@ endif
 # SELinux
 include device/sony/sepolicy/sepolicy.mk
 
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/vintf/manifest.xml
-DEVICE_MATRIX_FILE   := $(COMMON_PATH)/vintf/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/manifest.xml
+DEVICE_MATRIX_FILE   += $(COMMON_PATH)/vintf/compatibility_matrix.xml
 
 # Custom NXP vendor interfaces
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.nxp.nfc.interfaces.xml
+
+# Dynamic Power Management
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.qualcomm.qti.dpm.xml
 
 ifeq ($(PRODUCT_DEVICE_DS),true)
 ifeq ($(TARGET_USE_QCRILD),true)
@@ -168,6 +171,7 @@ ifeq ($(TARGET_USE_QCRILD),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hardware.radio.config.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio.uceservice.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.imsservices.xml
+DEVICE_MANIFEST_FILE += ${COMMON_PATH}/vintf/vendor.hw.dataservices.xml
 endif
 
 ifeq ($(TARGET_KEYMASTER_V4),true)

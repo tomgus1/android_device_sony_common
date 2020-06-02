@@ -16,12 +16,15 @@
 PRODUCT_PACKAGES += \
     init.usb.rc \
     adb_tcp.rc \
+    adpl.rc \
     adsprpcd.rc \
     audiopd.rc \
     cdsprpcd.rc \
     cnss-daemon.rc \
     ipacm.rc \
+    dataqti.rc \
     dpmQmiMgr.rc \
+    dpmd.rc \
     imsdatadaemon.rc \
     imsqmidaemon.rc \
     imsrcsd.rc \

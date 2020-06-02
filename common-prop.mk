@@ -43,27 +43,48 @@ endif
 # System props for the data modules
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.use_data_netmgrd=true \
+    persist.vendor.data.mode=concurrent \
     persist.data.netmgrd.qos.enable=true \
     ro.data.large_tcp_window_size=true
 
 # Enable Power save functionality for modem
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.add_power_save=1 \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.oem_socket=false
+    persist.vendor.radio.apm_sim_not_pwdn=1
+
+# Enable advanced power saving for data connectivity
+# DPM: Data Port Mapper, with TCM (TCP Connection Manager)
+# CnE: Connectivity Engine
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.dpm.feature=1 \
+    persist.vendor.dpm.tcm=1 \
+    persist.vendor.cne.feature=1
 
 # IMS
+# P.S.: va_{aosp,odm} is necessary to load imscmservice
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1 \
+    ro.vendor.qti.va_odm.support=1 \
     persist.vendor.radio.vdp_on_ims_cap=1 \
     persist.vendor.radio.report_codec=1
 
+# VoLTE / VT / WFC
+# These properties will force availability of the VoLTE,
+# VideoTelephony and Wi-Fi Call, without needing carrier
+# services provisioning sites hooked up: simplifies it.
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1  \
+    persist.dbg.wfc_avail_ovr=1
+
 # Modem properties
-PRODUCT_PROPERTY_OVERRIDES +=
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.wait_for_pbm=1 \
     persist.vendor.radio.mt_sms_ack=19 \
     persist.vendor.radio.enableadvancedscan=true \
     persist.vendor.radio.unicode_op_names=true \
-    persist.vendor.radio.sib16_support=1
+    persist.vendor.radio.sib16_support=1 \
+    persist.vendor.radio.oem_socket=true
 
 # Ringer
 PRODUCT_PROPERTY_OVERRIDES += \

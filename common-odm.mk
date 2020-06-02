@@ -1,5 +1,5 @@
 # Vendor version
-TARGET_VENDOR_VERSION := v5
+TARGET_VENDOR_VERSION := v7
 
 ifneq (,$(SONY_BUILD_ODM))
 
@@ -48,8 +48,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rmt_storage
 
+# GPS
+PRODUCT_PACKAGES += \
+    libdataitems
+
 # Miscta
 PRODUCT_PACKAGES += \
+    vendor.somc.hardware.miscta@1.0-service \
+    vendor.somc.hardware.miscta@1.0 \
+    libMiscTaWrapper \
     libmiscta \
     libta \
     ta_qmi_service \
@@ -65,6 +72,13 @@ PRODUCT_PACKAGES += \
     libaudcal \
     libaudioalsa
 
+# Graphite
+PRODUCT_PACKAGES += \
+    libgcs-calwrapper \
+    libgcs-ipc \
+    libgcs-osal \
+    libgcs
+
 # Sensors
 PRODUCT_PACKAGES += \
     sscrpcd \
@@ -79,6 +93,7 @@ PRODUCT_PACKAGES += \
     libqcmaputils \
     libconfigdb \
     libdiag \
+    libdiag_system \
     libdsi_netctrl \
     libdsutils \
     libnetmgr \
@@ -112,10 +127,18 @@ PRODUCT_PACKAGES += \
     libqrtr \
     libqsocket \
     qmuxd \
+    qti \
     qrtr-ns
+
+#EMBMS
+PRODUCT_PACKAGES += \
+    embms \
+    embmslibrary
 
 # IMS
 PRODUCT_PACKAGES += \
+    uceShimService \
+    datastatusnotification \
     imsdatadaemon \
     imsqmidaemon \
     imsrcsd \
@@ -151,7 +174,37 @@ PRODUCT_PACKAGES += \
     vendor.qti.ims.rcsconfig@1.1 \
     vendor.qti.imsrtpservice@1.0-service-Impl \
     vendor.qti.imsrtpservice@1.0 \
-    vendor.qti.latency@2.0
+    vendor.qti.latency@2.0 \
+    QtiTelephonyService \
+    QtiTelephonyServicelibrary \
+    uimgbalibrary \
+    uimgbamanagerlibrary \
+    uimlpalibrary \
+    uimremoteclient \
+    uimremoteclientlibrary \
+    uimremoteserver \
+    uimremoteserverlibrary \
+    com.qualcomm.qti.imscmservice-V2.0-java \
+    com.qualcomm.qti.imscmservice-V2.1-java \
+    com.qualcomm.qti.imscmservice-V2.2-java \
+    vendor.qti.data.factory-V1.0-java \
+    vendor.qti.data.factory-V2.0-java \
+    vendor.qti.ims.callinfo-V1.0-java \
+    vendor.qti.ims.rcsconfig-V1.0-java \
+    vendor.qti.hardware.data.dynamicdds-V1.0-java \
+    vendor.qti.hardware.data.connection-V1.1-java \
+    vendor.qti.hardware.data.connection-V1.0-java
+
+# DPM
+PRODUCT_PACKAGES += \
+    dpmapi \
+    com.qti.dpmframework
+
+# Modem Switcher
+PRODUCT_PACKAGES += \
+    sony-modem-switcher \
+    vendor.somc.hardware.modemswitcher@1.0-service \
+    vendor.somc.hardware.modemswitcher@1.0
 
 ifneq ($(TARGET_LEGACY_KEYMASTER),true)
 ifneq ($(TARGET_KEYMASTER_V4),true)
@@ -167,9 +220,7 @@ endif
 # Ril
 PRODUCT_PACKAGES += \
     qcrild \
-    qcril.db \
     libril-qc-hal-qmi \
-    libril-qc-qmi-1 \
     libril-qc-ltedirectdisc \
     libril-qc-radioconfig \
     libril-qcril-hook-oem \
@@ -189,8 +240,8 @@ PRODUCT_PACKAGES += \
     libqomx_jpegenc_pipe \
     libqomx_jpegenc \
 
-
-# Camera Framework
+# MMCamera Framework
+ifneq ($(filter loire tone yoshino nile ganges seine,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libflash_pmic \
     libmmcamera_dbg \
@@ -322,10 +373,9 @@ PRODUCT_PACKAGES += \
     libmmcamera_isp_scaler_viewfinder44 \
     libmmcamera_isp_scaler_viewfinder46 \
     libmmcamera_isp_wb40
+endif
 
-PRODUCT_PACKAGES += \
-    libmmcamera_imx402
-
+ifneq ($(filter loire tone,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_lc898217 \
     libactuator_lc898217xc \
@@ -342,7 +392,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx214_default_preview_lc898217 \
     libchromatix_imx214_default_video_lc898217 \
     libmmcamera_imx214
+endif
 
+ifneq ($(filter yoshino nile,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libchromatix_imx219_common \
     libchromatix_imx219_cpp_liveshot \
@@ -357,7 +409,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx219_default_preview \
     libchromatix_imx219_default_video \
     libmmcamera_imx219
+endif
 
+ifneq ($(filter loire,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libchromatix_imx241_common \
     libchromatix_imx241_cpp_liveshot \
@@ -372,7 +426,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx241_default_preview \
     libchromatix_imx241_default_video \
     libmmcamera_imx241
+endif
 
+ifneq ($(filter yoshino,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_lc898217xc \
     libchromatix_imx258_common \
@@ -388,7 +444,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx258_default_preview_lc898217 \
     libchromatix_imx258_default_video_lc898217 \
     libmmcamera_imx258
+endif
 
+ifneq ($(filter loire tone nile,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_bu64747BS4 \
     libchromatix_imx300_common \
@@ -404,7 +462,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx300_default_preview_bu64747 \
     libchromatix_imx300_default_video_bu64747 \
     libmmcamera_imx300
+endif
 
+ifneq ($(filter yoshino,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_bu64747BS2 \
     libchromatix_imx400_common \
@@ -420,7 +480,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx400_default_preview_bu64747 \
     libchromatix_imx400_default_video_bu64747 \
     libmmcamera_imx400
+endif
 
+ifneq ($(filter ganges seine,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_lc898219xi \
     libchromatix_imx486_common \
@@ -436,7 +498,9 @@ PRODUCT_PACKAGES += \
     libchromatix_imx486_zsl_preview \
     libchromatix_imx486_zsl_video \
     libmmcamera_imx486
+endif
 
+ifneq ($(filter ganges,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libactuator_lc898214xd \
     libchromatix_s5k3l6_common \
@@ -452,7 +516,9 @@ PRODUCT_PACKAGES += \
     libchromatix_s5k3l6_zsl_preview \
     libchromatix_s5k3l6_zsl_video \
     libmmcamera_s5k3l6
+endif
 
+ifneq ($(filter ganges,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     libchromatix_s5k4h7yx_common \
     libchromatix_s5k4h7yx_cpp_liveshot \
@@ -467,8 +533,60 @@ PRODUCT_PACKAGES += \
     libchromatix_s5k4h7yx_zsl_preview \
     libchromatix_s5k4h7yx_zsl_video \
     libmmcamera_s5k4h7yx
+endif
+
+ifneq ($(filter seine,$(SOMC_PLATFORM)),)
+PRODUCT_PACKAGES += \
+    libactuator_dw9768_tele \
+    libchromatix_s5k4h7yx_front_common \
+    libchromatix_s5k4h7yx_front_cpp_liveshot \
+    libchromatix_s5k4h7yx_front_cpp_preview \
+    libchromatix_s5k4h7yx_front_cpp_snapshot \
+    libchromatix_s5k4h7yx_front_cpp_video \
+    libchromatix_s5k4h7yx_front_postproc \
+    libchromatix_s5k4h7yx_front_liveshot \
+    libchromatix_s5k4h7yx_front_preview \
+    libchromatix_s5k4h7yx_front_snapshot \
+    libchromatix_s5k4h7yx_front_video \
+    libchromatix_s5k4h7yx_front_zsl_preview \
+    libchromatix_s5k4h7yx_front_zsl_video \
+    libmmcamera_s5k4h7yx_front
+
+PRODUCT_PACKAGES += \
+    libactuator_dw9768_tele \
+    libchromatix_s5k4h7yx_tele_common \
+    libchromatix_s5k4h7yx_tele_cpp_liveshot \
+    libchromatix_s5k4h7yx_tele_cpp_preview \
+    libchromatix_s5k4h7yx_tele_cpp_snapshot \
+    libchromatix_s5k4h7yx_tele_cpp_video \
+    libchromatix_s5k4h7yx_tele_postproc \
+    libchromatix_s5k4h7yx_tele_liveshot \
+    libchromatix_s5k4h7yx_tele_preview \
+    libchromatix_s5k4h7yx_tele_snapshot \
+    libchromatix_s5k4h7yx_tele_video \
+    libchromatix_s5k4h7yx_tele_zsl_preview \
+    libchromatix_s5k4h7yx_tele_zsl_video \
+    libmmcamera_s5k4h7yx_tele
+
+PRODUCT_PACKAGES += \
+    libactuator_dw9768_wide \
+    libchromatix_s5k4h7yx_uwide_common \
+    libchromatix_s5k4h7yx_uwide_cpp_liveshot \
+    libchromatix_s5k4h7yx_uwide_cpp_preview \
+    libchromatix_s5k4h7yx_uwide_cpp_snapshot \
+    libchromatix_s5k4h7yx_uwide_cpp_video \
+    libchromatix_s5k4h7yx_uwide_postproc \
+    libchromatix_s5k4h7yx_uwide_liveshot \
+    libchromatix_s5k4h7yx_uwide_preview \
+    libchromatix_s5k4h7yx_uwide_snapshot \
+    libchromatix_s5k4h7yx_uwide_video \
+    libchromatix_s5k4h7yx_uwide_zsl_preview \
+    libchromatix_s5k4h7yx_uwide_zsl_video \
+    libmmcamera_s5k4h7yx_wide
+endif
 
 # CAMX Libs
+ifneq ($(filter kumano tama,$(SOMC_PLATFORM)),)
 PRODUCT_PACKAGES += \
     com.qti.node.swregistration \
     com.qti.camx.chiiqutils \
@@ -485,19 +603,15 @@ PRODUCT_PACKAGES += \
     com.qti.node.remosaic \
     com.qti.node.stitch \
     com.qti.node.depth \
-    camera.sdm845 \
-    camera.sm8150
-
-
-# Common
-PRODUCT_PACKAGES += \
+    com.qti.tuned.default \
     fdconfigpreview \
     fdconfigpreviewlite \
     fdconfigvideo \
     fdconfigvideolite \
-    com.qti.tuned.default \
+    camera.sdm845 \
+    camera.sm8150
+endif
 
-# Tama
 ifeq ($(SOMC_PLATFORM),tama)
 PRODUCT_PACKAGES += \
     com.sony.sensormodule.blakiston_imx400 \
@@ -514,7 +628,6 @@ PRODUCT_PACKAGES += \
     com.sony.tuned.imx258
 endif
 
-# Kumano
 ifeq ($(SOMC_PLATFORM),kumano)
 PRODUCT_PACKAGES += \
     com.sony.sensormodule.milvus_imx445 \
